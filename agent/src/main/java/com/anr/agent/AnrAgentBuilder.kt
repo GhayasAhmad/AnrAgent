@@ -9,7 +9,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 
 /**
- * Builder class for creating an instance of [GrizzlyMonitor].
+ * Builder class for creating an instance of [AnrMonitor].
  *
  * @property context The application context.
  */
@@ -27,9 +27,9 @@ class AnrAgentBuilder(private val context: Context) {
      * Sets the threshold for detecting ANRs.
      *
      * @param threshold The threshold in milliseconds. Valid values are between 1000 and 4500.
-     * @return The current instance of [GrizzlyMonitorBuilder].
+     * @return The current instance of [AnrAgentBuilder].
      */
-    fun withThreshold(threshold: Long): AnrMonitorBuilder {
+    fun withThreshold(threshold: Long): AnrAgentBuilder {
         this.mThreshold = threshold
         return this
     }
@@ -38,9 +38,9 @@ class AnrAgentBuilder(private val context: Context) {
      * Sets the title for crash dialogs.
      *
      * @param title The title to be displayed.
-     * @return The current instance of [GrizzlyMonitorBuilder].
+     * @return The current instance of [AnrAgentBuilder].
      */
-    fun withTitle(title: String): AnrMonitorBuilder {
+    fun withTitle(title: String): AnrAgentBuilder {
         this.mTitle = title
         return this
     }
@@ -50,9 +50,9 @@ class AnrAgentBuilder(private val context: Context) {
      * Sets the message for crash dialogs.
      *
      * @param message The message to be displayed.
-     * @return The current instance of [GrizzlyMonitorBuilder].
+     * @return The current instance of [AnrAgentBuilder].
      */
-    fun withMessage(message: String): AnrMonitorBuilder {
+    fun withMessage(message: String): AnrAgentBuilder {
         this.mMessage = message
         return this
     }
@@ -61,21 +61,21 @@ class AnrAgentBuilder(private val context: Context) {
      * Sets the Firebase Crashlytics instance for crash reporting.
      *
      * @param firebaseCrashlytics The FirebaseCrashlytics instance.
-     * @return The current instance of [GrizzlyMonitorBuilder].
+     * @return The current instance of [AnrAgentBuilder].
      */
-    fun withFirebaseCrashLytics(firebaseCrashlytics: FirebaseCrashlytics): GrizzlyMonitorBuilder {
+    fun withFirebaseCrashLytics(firebaseCrashlytics: FirebaseCrashlytics): AnrAgentBuilder {
         this.mFirebaseCrashlytics = firebaseCrashlytics
         return this
     }
 
 
     /**
-     * Builds and returns an instance of [GrizzlyMonitor].
+     * Builds and returns an instance of [AnrMonitor].
      *
-     * @return A new instance of [GrizzlyMonitor].
+     * @return A new instance of [AnrMonitor].
      */
-    fun build(): AnrMonitor {
-        return AnrMonitorImpl(
+    fun build(): AnrAgentMonitor {
+        return AnrAgentMonitorImpl(
             AnrMonitorBuilder
                 .withThreshold(mThreshold)
                 .build()

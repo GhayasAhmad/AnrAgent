@@ -51,5 +51,6 @@ dependencies {
     implementation(libs.firebase.analytics)
 
 
+    implementation("io.github.farimarwat:grizzly:2.4.2")
 
 }
