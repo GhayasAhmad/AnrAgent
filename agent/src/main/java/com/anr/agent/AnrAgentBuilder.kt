@@ -1,8 +1,11 @@
 package com.anr.agent
 
 import android.content.Context
+import com.anr.agent.anr_detector.AnrMonitor
 import com.anr.agent.anr_detector.AnrMonitorBuilder
 import com.anr.agent.anr_detector.AnrMonitorBuilder.THRESHOLD_DEFAULT
+import com.anr.agent.anr_detector.AnrMonitorImpl
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 
 /**
@@ -26,7 +29,7 @@ class AnrAgentBuilder(private val context: Context) {
      * @param threshold The threshold in milliseconds. Valid values are between 1000 and 4500.
      * @return The current instance of [GrizzlyMonitorBuilder].
      */
-    fun withThreshold(threshold: Long): GrizzlyMonitorBuilder {
+    fun withThreshold(threshold: Long): AnrMonitorBuilder {
         this.mThreshold = threshold
         return this
     }
@@ -37,10 +40,11 @@ class AnrAgentBuilder(private val context: Context) {
      * @param title The title to be displayed.
      * @return The current instance of [GrizzlyMonitorBuilder].
      */
-    fun withTitle(title: String): GrizzlyMonitorBuilder {
+    fun withTitle(title: String): AnrMonitorBuilder {
         this.mTitle = title
         return this
     }
+
 
     /**
      * Sets the message for crash dialogs.
@@ -48,7 +52,7 @@ class AnrAgentBuilder(private val context: Context) {
      * @param message The message to be displayed.
      * @return The current instance of [GrizzlyMonitorBuilder].
      */
-    fun withMessage(message: String): GrizzlyMonitorBuilder {
+    fun withMessage(message: String): AnrMonitorBuilder {
         this.mMessage = message
         return this
     }
@@ -70,16 +74,12 @@ class AnrAgentBuilder(private val context: Context) {
      *
      * @return A new instance of [GrizzlyMonitor].
      */
-    fun build(): GrizzlyMonitor {
-        return GrizzlyMonitorImpl(
+    fun build(): AnrMonitor {
+        return AnrMonitorImpl(
             AnrMonitorBuilder
                 .withThreshold(mThreshold)
-                .build(),
-            CrashMonitorBuilder(context)
-                .withTitle(mTitle)
-                .withMessage(mMessage)
-                .withFirebaseCrashlytics(mFirebaseCrashlytics)
                 .build()
         )
     }
+
 }

@@ -2,8 +2,12 @@ package com.anr.agent.anr_detector
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+
+
+private const val TAG = "ANR_MONITOR"
 
 internal class AnrMonitorImpl(
     private val mThreshold: Long = 4000L
@@ -53,7 +57,7 @@ internal class AnrMonitorImpl(
         val title = "ANR detected: Method `$method` blocked main thread for at least $duration ms"
         val exception = AnrMonitorException(title, stack)
 
-        Timber.i(exception)
+        Log.i(TAG, exception.toString())
 
         throw exception
     }

@@ -25,7 +25,7 @@ class ReportActivity : AppCompatActivity() {
         loadViews(intent)
     }
 
-    fun loadViews(intent: Intent){
+    fun loadViews(intent: Intent) {
         val title = intent.getStringExtra(EXTRA_TITLE)
         val msg = intent.getStringExtra(EXTRA_MESSAGE)
         findViewById<TextView>(R.id.txtTitle)
@@ -34,7 +34,7 @@ class ReportActivity : AppCompatActivity() {
             .text = msg
 
         findViewById<Button>(R.id.btnClose)
-            .setOnClickListener{
+            .setOnClickListener {
                 finishAndRemoveTask()
                 exitProcess(0)
             }
