@@ -1,6 +1,7 @@
 package com.anr.agent
 
 import android.app.Application
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class MyApplication(
 ) : Application() {
@@ -15,7 +16,6 @@ class MyApplication(
             .withThreshold(3000L) // Set ANR threshold (1000-4500ms)
             .withTitle("App Error") // Set custom crash dialog title
             .withMessage("An error occurred. Please restart.") // Set custom crash dialog message
-            .withFirebaseCrashLytics(firebaseCrashlytics) // Integrate with Firebase Crashlytics
             .build()
             .start()
     }

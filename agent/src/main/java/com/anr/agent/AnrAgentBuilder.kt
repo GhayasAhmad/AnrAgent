@@ -4,7 +4,6 @@ import android.content.Context
 import com.anr.agent.anr_detector.AnrMonitor
 import com.anr.agent.anr_detector.AnrMonitorBuilder
 import com.anr.agent.anr_detector.AnrMonitorBuilder.THRESHOLD_DEFAULT
-import com.anr.agent.anr_detector.AnrMonitorImpl
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 
@@ -63,7 +62,7 @@ class AnrAgentBuilder(private val context: Context) {
      * @param firebaseCrashlytics The FirebaseCrashlytics instance.
      * @return The current instance of [AnrAgentBuilder].
      */
-    fun withFirebaseCrashLytics(firebaseCrashlytics: FirebaseCrashlytics): AnrAgentBuilder {
+    fun withFirebaseCrashlytics(firebaseCrashlytics: FirebaseCrashlytics): AnrAgentBuilder {
         this.mFirebaseCrashlytics = firebaseCrashlytics
         return this
     }

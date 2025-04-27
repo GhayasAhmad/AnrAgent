@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
 
+    implementation(project(":agent"))
+
 
     implementation("io.github.farimarwat:grizzly:2.4.2")
 
